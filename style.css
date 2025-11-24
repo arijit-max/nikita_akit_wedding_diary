@@ -1,0 +1,447 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #fff8f1;
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --accent: #ff9f80;
+    --accent-2: #fdd26e;
+    --text-main: #2f2a3a;
+    --text-soft: #6b6478;
+    --border-soft: rgba(255, 255, 255, 0.7);
+    --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.08);
+    --radius-lg: 20px;
+    --radius-pill: 999px;
+}
+
+body {
+    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    background: radial-gradient(circle at top, #ffe5d2 0, #fff8f1 40%, #ffe6f5 100%);
+    color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
+}
+
+.page-wrapper {
+    min-height: 100vh;
+}
+
+/* Hero */
+
+.hero {
+    position: relative;
+    padding: 80px 20px 120px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.6;
+    z-index: -1;
+}
+
+.hero::before {
+    width: 260px;
+    height: 260px;
+    background: #ffd3b2;
+    top: -80px;
+    left: -40px;
+}
+
+.hero::after {
+    width: 260px;
+    height: 260px;
+    background: #ffc4e6;
+    bottom: -100px;
+    right: -40px;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 40px 16px 0;
+    margin-inline: auto;
+    max-width: 960px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.tagline {
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-soft);
+    margin-bottom: 8px;
+}
+
+.hero h1 {
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+
+.hero-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-soft);
+    margin-bottom: 24px;
+}
+
+/* Generic Section */
+
+.section {
+    padding: 24px 20px 32px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+}
+
+.section p {
+    font-size: 0.95rem;
+    color: var(--text-soft);
+}
+
+/* Intro */
+
+.intro {
+    text-align: center;
+}
+
+/* 🔸 Carousel */
+
+.carousel-section {
+    text-align: center;
+}
+
+.carousel-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    margin-bottom: 14px;
+}
+
+.carousel {
+    position: relative;
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 24px;
+    box-shadow: var(--shadow-soft);
+    padding: 10px 10px 16px;
+    overflow: hidden;
+}
+
+.carousel-track {
+    position: relative;
+    height: 260px;
+}
+
+.carousel-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: scale(0.96);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 18px;
+}
+
+/* Carousel arrows */
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--text-main);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    z-index: 2;
+}
+
+.carousel-arrow.prev {
+    left: 8px;
+}
+
+.carousel-arrow.next {
+    right: 8px;
+}
+
+.carousel-arrow:hover {
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-arrow:active {
+    transform: translateY(-50%) scale(0.98);
+}
+
+/* Carousel dots */
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.carousel-dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    border: none;
+    background: rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    transition: width 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-dots .dot.active {
+    width: 20px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    transform: translateY(-1px);
+}
+
+/* Timeline & Cards */
+
+.timeline-section {
+    padding-top: 8px;
+}
+
+.timeline {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.event-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 18px 16px 16px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-soft);
+    position: relative;
+    overflow: hidden;
+
+    /* fade-in animation base */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.event-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.event-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(255, 209, 124, 0.25), transparent 55%);
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.event-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.event-step {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(135deg, var(--accent-2), var(--accent));
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.event-header h3 {
+    font-size: 1.1rem;
+}
+
+.event-description {
+    font-size: 0.86rem;
+    color: var(--text-soft);
+    margin-bottom: 10px;
+}
+
+/* Event meta info (date / time / venue) */
+
+.event-meta {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.event-meta li {
+    font-size: 0.86rem;
+    margin-bottom: 4px;
+}
+
+.meta-label {
+    font-weight: 600;
+    color: var(--text-main);
+    margin-right: 4px;
+}
+
+.meta-value {
+    color: var(--text-soft);
+}
+
+/* Photos */
+
+.photo-grid {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 6px;
+}
+
+.photo-grid img {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Buttons */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    border: none;
+    outline: none;
+    font-size: 0.83rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease;
+    white-space: nowrap;
+}
+
+.hero-btn {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #fff;
+    box-shadow: 0 12px 24px rgba(255, 159, 128, 0.5);
+}
+
+.btn-map {
+    margin-top: 6px;
+    background: linear-gradient(135deg, #3cd26f, #21a566);
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(16, 130, 71, 0.4);
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Footer */
+
+.footer {
+    text-align: center;
+    padding: 16px 0 24px;
+    font-size: 0.8rem;
+    color: var(--text-soft);
+}
+
+/* Larger screens */
+
+@media (min-width: 700px) {
+    .hero {
+        padding-top: 96px;
+        padding-bottom: 140px;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-overlay {
+        inset-inline: 24px;
+    }
+
+    .section {
+        padding-inline: 24px;
+    }
+
+    .timeline {
+        gap: 22px;
+    }
+
+    .event-card {
+        display: grid;
+        grid-template-columns: minmax(0, 2.3fr) minmax(0, 3fr);
+        gap: 14px;
+    }
+
+    .photo-grid {
+        align-self: end;
+    }
+
+    .carousel-track {
+        height: 320px;
+    }
+}
